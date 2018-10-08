@@ -1,3 +1,8 @@
+//https://github.com/huttarichard/instagram-private-api  
+//https://www.npmjs.com/package/instagram-private-api
+//https://github.com/totemstech/instagram-node
+//https://dev.to/aurelkurtula/working-with-instagram-api-and-passportjs-in-a-node-application--5068
+
 var express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
