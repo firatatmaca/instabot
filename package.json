@@ -1,27 +1,36 @@
 {
-    "name": "instabot",
-    "description": "instabot",
-    "version": "1.0.0",
-    "main": "index.js",
-    "scripts": {
-        "start": "nodemon server.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/firatatmaca/instabot.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/firatatmaca/instabot/issues"
-    },
-    "homepage": "https://github.com/firatatmaca/instabot#readme",
-    "devDependencies": {
-        "nodemon": "^1.18.4"
-    },
-    "dependencies": {
-        "express": "^4.16.3"
-    }
+  "name": "instabot",
+  "description": "instabot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firatatmaca/instabot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/firatatmaca/instabot/issues"
+  },
+  "homepage": "https://github.com/firatatmaca/instabot#readme",
+  "devDependencies": {
+    "babel-preset-stage-3": "^6.22.0",
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-preset-es2015-node5": "*",
+    "babel-register": "*"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "passport": "^0.4.0",
+    "passport-instagram": "^1.0.0",
+    "pug": "^2.0.3"
+  }
 }

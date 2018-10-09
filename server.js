@@ -1,24 +1,38 @@
-//https://github.com/huttarichard/instagram-private-api  
-//https://www.npmjs.com/package/instagram-private-api
-//https://github.com/totemstech/instagram-node
-//https://dev.to/aurelkurtula/working-with-instagram-api-and-passportjs-in-a-node-application--5068
+import express from 'express';
+import session from 'express-session';
+import axios from 'axios';
 
-var express = require('express'),
-    app = express(),
-    port = process.env.PORT || 3000,
-    Task = require('./models/todoListModel'),
-    bodyParser = require('body-parser');
+import passport from './authentication/passport';
+import { instagram } from './authentication/strategies';
+import index from './routes/index';
+import auth from './routes/auth';
+import users from './routes/users';
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const port = process.env.PORT || 3000;
+const app = express();
 
-var routes = require('./routes/todoListRoutes');
-routes(app);
+app.use(express.static(__dirname + '/public'));
+app.set('view engine', 'pug')
 
-app.use(function (req, res) {
-    res.status(404).send({ url: req.originalUrl + ' not found' })
-});
+// Setting express sessions
+app.use(session({
+  secret: 'sytr456-65tyrd-12wrt',
+  resave: true, 
+  saveUninitialized: true
+}))
 
-app.listen(port);
+// passport and instagram initialization 
+passport(app);
+instagram()
 
-console.log('instabot RESTful API server started on: ' + port);
+// 5. routing
+app.use('/', index);
+app.use('/users', users);
+app.use('/auth', auth);
+
+app.get('/logout', (req,res) => {
+  req.logout()
+  res.redirect('/')
+})
+
+app.listen(port, () => console.log(`http://localhost:${port}`))
