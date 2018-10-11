@@ -19,6 +19,10 @@ app.use(function (req, res) {
     res.status(404).send({ url: req.originalUrl + ' not found' })
 });
 
-app.listen(port);
+//app.listen(port);
 
 console.log('instabot RESTful API server started on: ' + port);
+
+app.listen(port, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });

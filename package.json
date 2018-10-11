@@ -28,5 +28,9 @@
     "passport": "^0.4.0",
     "passport-instagram": "^1.0.0",
     "pug": "^2.0.3"
+  },
+  "engines": {
+    "node": "0.10.41",
+    "npm": "1.4.29"
   }
 }
